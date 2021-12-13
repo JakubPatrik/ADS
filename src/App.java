@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.List;
+
 public class App {
   public static void main(String[] args) {
     int[] data = { 11, 90, 33, 71, 24, 50, 35, 30, 15, 21 };
@@ -5,21 +8,27 @@ public class App {
     // QuickSort.sort(data);
     // QuickSortInPlace.sort(data);
     // HeapSort.sort(data);
-    data = BucketSort.sort(data);
-    for (int i : data)
-      System.out.print(i + ", ");
+    // BucketSort.sort(data);
+    // for (int i : data)
+    // System.out.print(i + ", ");
 
-    System.out.println("\n" + fCaller(new int[]{1,2,3}));
+    List<String> words = Arrays.asList("donut", "cherry", "banana", "apple");
+    List<String> sorted = RadixSortMSD.sort(words);
+    for (String s : sorted)
+      System.out.print(s + " ");
+      
+    System.out.println("\n" + fCaller(new int[] { 1, 2, 3 }));
   }
+
   public static int fCaller(int[] arr) {
     return f(arr, 0, arr.length - 1);
   }
-  
+
   private static int f(int[] arr, int i, int k) {
     if (i > k) {
       return 0;
     }
-    return f(arr, i+1, k) + f(arr, i, k-1) + arr[i] + arr[k];
+    return f(arr, i + 1, k) + f(arr, i, k - 1) + arr[i] + arr[k];
   }
 
   public static void insertionSort(int[] arr) {
@@ -59,11 +68,11 @@ public class App {
   }
 
   // private static int[] copy(int[] arr) {
-  //   int[] res = new int[arr.length];
-  //   int i = 0;
-  //   while (i < arr.length)
-  //     res[i] = arr[i++];
-  //   return res;
+  // int[] res = new int[arr.length];
+  // int i = 0;
+  // while (i < arr.length)
+  // res[i] = arr[i++];
+  // return res;
   // }
 
 }

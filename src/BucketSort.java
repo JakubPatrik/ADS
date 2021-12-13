@@ -2,8 +2,8 @@ import java.util.*;
 
 class BucketSort {
 
-    public static int[] sort(int[] a) {
-        return readBuckets(fillBuckets(a));
+    public static void sort(int[] a) {
+        readBuckets(a, fillBuckets(a));
     }
 
     @SuppressWarnings("unchecked")
@@ -25,18 +25,12 @@ class BucketSort {
         return buckets;
     }
 
-    public static int[] readBuckets(Queue<Integer>[] buckets) {
-        if (buckets == null) return null;
-        // get the size of the output
-        int n = 0;
-        for (Queue<Integer> bucket : buckets) n += bucket.size();
+    public static void readBuckets(int[] a, Queue<Integer>[] buckets) {
+        if (buckets == null) return;
 
-        int[] res = new int[n];
         for (int b = 0, i = 0; b < buckets.length; b++) {
             Queue<Integer> bucket = buckets[b];
-            while (!bucket.isEmpty()) res[i++] = bucket.poll();
+            while (!bucket.isEmpty()) a[i++] = bucket.poll();
         }
-
-        return res;
     }
 }
