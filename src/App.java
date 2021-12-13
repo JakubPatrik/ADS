@@ -4,7 +4,7 @@ import java.util.List;
 public class App {
   public static void main(String[] args) {
     int[] data = { 11, 90, 33, 71, 24, 50, 35, 30, 15, 21 };
-    // shellSort(data);
+    shellSort(data);
     // MergeSort.sort(data);
     // QuickSort.sort(data);
     // QuickSortInPlace.sort(data);
@@ -46,10 +46,8 @@ public class App {
       for (int i = gap; i < arr.length; i++) {
         int x = arr[i];
         int j = i;
-        while (j >= gap && arr[j - gap] > x) {
-          arr[j] = arr[j - gap];
-          j -= gap;
-        }
+        while (j >= gap && arr[j - gap] > x)
+          arr[j] = arr[j -= gap];
         arr[j] = x;
       }
   }
