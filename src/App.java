@@ -4,13 +4,13 @@ import java.util.List;
 public class App {
   public static void main(String[] args) {
     int[] data = { 11, 90, 33, 71, 24, 50, 35, 30, 15, 21 };
+    // shellSort(data);
     // MergeSort.sort(data);
     // QuickSort.sort(data);
     // QuickSortInPlace.sort(data);
     // HeapSort.sort(data);
     // BucketSort.sort(data);
-    // for (int i : data)
-    // System.out.print(i + ", ");
+    for (int i : data) System.out.print(i + ", ");
 
     List<String> words = Arrays.asList("donut", "cherry", "banana", "apple");
     List<String> sorted = RadixSortMSD.sort(words);
@@ -39,6 +39,19 @@ public class App {
         arr[j] = arr[--j];
       arr[j] = x;
     }
+  }
+
+  public static void shellSort(int[] arr) {
+    for (int gap = arr.length / 2; gap > 0; gap /= 2) 
+      for (int i = gap; i < arr.length; i++) {
+        int x = arr[i];
+        int j = i;
+        while (j >= gap && arr[j - gap] > x) {
+          arr[j] = arr[j - gap];
+          j -= gap;
+        }
+        arr[j] = x;
+      }
   }
 
   public static void selectionSort(int[] arr) {
